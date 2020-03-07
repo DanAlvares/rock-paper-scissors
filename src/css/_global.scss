@@ -5,3 +5,11 @@ body {
 	margin: 0;
 	font-family: Helvetica, sans-serif;
 }
+main {
+	display: flex;
+	justify-content: center;
+}
+article {
+	display: flex;
+	flex-flow: column;
+}
