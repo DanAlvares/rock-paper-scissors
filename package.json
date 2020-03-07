@@ -12,6 +12,7 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base --mode development",
     "lint": "eslint . --ext .js",
+    "build": "webpack",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
@@ -27,7 +28,9 @@
     "eslint-loader": "^3.0.2",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.0.6",
+    "husky": "^4.2.3",
     "jest": "^24.9.0",
+    "lint-staged": "^10.0.8",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.13.0",
     "regenerator-runtime": "^0.13.3",
@@ -38,6 +41,17 @@
     "webpack-cli": "^3.3.10",
     "webpack-core": "^0.6.9",
     "webpack-dev-server": "^3.9.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && jest"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "license": "UNLICENSED"
 }

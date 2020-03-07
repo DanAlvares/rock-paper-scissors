@@ -1,6 +1,6 @@
 # Rock - Paper - Scissors 
 
-A simple game of Rock-Paper-Scissors where you can play against the computer or simulate a game, computer vs computer.
+A simple game of Rock-Paper-Scissors where you can play against the computer or simulate a game, computer vs computer. 
 
 ## Running the App
 
