@@ -14,8 +14,14 @@
 		}
 		&.paper-btn{background-position: -122px 0;}
 		&.scissors-btn{background-position: -238px 0;}
-		&.lizard-btn{background-position: -360px 0;}
-		&.spock-btn{background-position: -480px 0;}
+
+		@media (max-width: 567px) {
+			background-size: 580px;
+			height: 60px;
+			width: 60px;
+			&.paper-btn{background-position: -122px 0;}
+			&.scissors-btn{background-position: -238px 0;}
+		}
 	}
 }
 

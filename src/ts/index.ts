@@ -3,6 +3,6 @@ import "regenerator-runtime/runtime";
 
 import logger from './logger';
 
-import '../css/index.scss';
+import '../scss/index.scss';
 
 logger('it works well!');
