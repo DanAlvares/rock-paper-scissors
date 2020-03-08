@@ -70,6 +70,7 @@ describe('Game', () => {
             game.result_elem = document.createElement('div');
             game.score_one = document.createElement('div');
             game.score_two = document.createElement('div');
+            jest.spyOn(game, 'displayResult').mockImplementation();
         });
 
         it('should be a Win for PLAYER ONE', () => {

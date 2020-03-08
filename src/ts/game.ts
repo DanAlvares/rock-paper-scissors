@@ -3,10 +3,8 @@ import { GameElements } from './gameElements';
 export class Game extends GameElements {
     public playerOne: IPlayer = { name: 'Player One', score: 0 };
     public playerTwo: IPlayer = { name: 'Simone (CPU)', score: 0 };
-
     public possibleChoices: choices = ['rock', 'paper', 'scissors'];
     public possibleWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
-
     public results = {
         PLAYER_ONE: `Player One Wins!!!`,
         PLAYER_TWO: `Player Two Wins!!!`,
@@ -17,6 +15,8 @@ export class Game extends GameElements {
         'paper:rock': 'Paper covers Rock',
         'scissors:paper': 'Scissors cut Paper'
     };
+
+    private isSimulation = false;
 
     constructor() {
         super();
@@ -42,10 +42,15 @@ export class Game extends GameElements {
         this.paper_btn.addEventListener('click', this.play.bind(this, 'paper'));
         this.scissors_btn.addEventListener('click', this.play.bind(this, 'scissors'));
 
-        this.restart_btn.addEventListener('click', this.restartGame.bind(this))
+        this.restart_btn.addEventListener('click', this.restartGame.bind(this));
+        this.simulate_btn.addEventListener('click', this.simulateGame.bind(this));
     }
 
     play(playerChoice: choice): void {
+        if (this.isSimulation) {
+            this.restartGame()
+            this.isSimulation = false;
+        }
         this.setPlayerNames(this.playerOne.name, this.playerTwo.name);
         this.checkResult(playerChoice, this.computerChoice())
     }
@@ -58,6 +63,8 @@ export class Game extends GameElements {
 
     checkResult(playerOneChoice: choice, playerTwoChoice: choice): string {
         const result = `${playerOneChoice}:${playerTwoChoice}`;
+
+        this.displayResult(playerOneChoice, playerTwoChoice)
 
         if (playerOneChoice === playerTwoChoice) {
             this.description.textContent = '-';
@@ -80,6 +87,16 @@ export class Game extends GameElements {
         this.player_two_name.textContent = playerTwo;
     }
 
+    simulateGame() {
+        if (!this.isSimulation) {
+            this.restartGame()
+            this.isSimulation = true;
+        }
+        this.checkResult(this.computerChoice(), this.computerChoice());
+        this.setPlayerNames('Simone (CPU)', 'Tim (CPU)')
+        this.isSimulation = true;
+    }
+
     updateScore(elementToUpdate: HTMLElement, score: number): void {
         elementToUpdate.innerHTML = score.toString();
         if (this.restart_btn.hasAttribute('disabled')) {
@@ -97,6 +114,12 @@ export class Game extends GameElements {
         this.updateScore(this.score_two, this.playerTwo.score)
 
         return [this.playerOne, this.playerTwo]
+    }
+
+    displayResult(playerOneChoice: choice, playerTwoChoice: choice) {
+        this.main_stage.classList.add('game-over');
+        this.player_one_stage.className = `player player-one ${playerOneChoice}`;
+        this.player_two_stage.className = `player player-two ${playerTwoChoice}`;
     }
 }
 
