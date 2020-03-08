@@ -49,7 +49,12 @@ describe('Game', () => {
     describe('Check Result', () => {
         beforeEach(() => {
             // Arrange
+            game.playerOne.score = 0;
+            game.playerTwo.score = 0;
             game.description = document.createElement('div');
+            game.result_elem = document.createElement('div');
+            game.score_one = document.createElement('div');
+            game.score_two = document.createElement('div');
         });
 
         it('should be a Win for PLAYER ONE', () => {
@@ -57,6 +62,7 @@ describe('Game', () => {
             const result = game.checkResult('rock', 'scissors');
 
             // Assert
+            expect(game.playerOne.score).toBe(1)
             expect(result).toBe(game.results.PLAYER_ONE)
             expect(game.description.innerHTML).toBe(game.resultDescription['rock:scissors'])
         });
@@ -66,6 +72,7 @@ describe('Game', () => {
             const result = game.checkResult('paper', 'scissors');
 
             // Assert
+            expect(game.playerTwo.score).toBe(1)
             expect(result).toBe(game.results.PLAYER_TWO)
             expect(game.description.innerHTML).toBe(game.resultDescription['scissors:paper'])
         });
@@ -75,6 +82,8 @@ describe('Game', () => {
             const result = game.checkResult('rock', 'rock');
 
             // Assert
+            expect(game.playerOne.score).toBe(0)
+            expect(game.playerTwo.score).toBe(0)
             expect(result).toBe(game.results.DRAW)
             expect(game.description.innerHTML).toBe('-')
         });

@@ -54,24 +54,32 @@ export class Game extends GameElements {
         return this.possibleChoices[randomChoice];
     }
 
-    checkResult(playerOneChoice: choice, playerTwoChoice: choice) {
+    checkResult(playerOneChoice: choice, playerTwoChoice: choice): string {
         const result = `${playerOneChoice}:${playerTwoChoice}`;
 
         if (playerOneChoice === playerTwoChoice) {
-            this.description.textContent = '-'
-            return this.results.DRAW;
+            this.description.textContent = '-';
+            return this.result_elem.innerHTML = this.results.DRAW;
         } else if (this.possibleWins.indexOf(result) > -1) {
-            this.description.textContent = this.resultDescription[result]
-            return this.results.PLAYER_ONE;
+            this.playerOne.score++;
+            this.description.textContent = this.resultDescription[result];
+            this.updateScore(this.score_one, this.playerOne.score);
+            return this.result_elem.innerHTML = this.results.PLAYER_ONE;
         } else {
-            this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`]
-            return this.results.PLAYER_TWO;
+            this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`];
+            this.playerTwo.score++;
+            this.updateScore(this.score_two, this.playerTwo.score);
+            return this.result_elem.innerHTML = this.results.PLAYER_TWO;
         }
     }
 
     setPlayerNames(playerOne: string, playerTwo: string): void {
         this.player_one_name.textContent = playerOne;
         this.player_two_name.textContent = playerTwo;
+    }
+
+    updateScore(elementToUpdate: HTMLElement, score: number): void {
+        elementToUpdate.innerHTML = score.toString();
     }
 }
 
