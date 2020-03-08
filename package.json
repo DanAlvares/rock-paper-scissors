@@ -13,7 +13,7 @@
     "dev": "webpack-dev-server --content-base --mode development",
     "lint": "eslint . --ext .ts",
     "build": "webpack",
-    "test": "jest",
+    "test": "jest --runInBand",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
   },
