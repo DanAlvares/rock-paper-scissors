@@ -4,7 +4,7 @@ export class Game extends GameElements {
     public playerOne: IPlayer = { name: 'Player One', score: 0 };
     public playerTwo: IPlayer = { name: 'Simone (CPU)', score: 0 };
     public possibleChoices: choices = ['rock', 'paper', 'scissors'];
-    public possibleWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
+    public possiblePlayerOneWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
     public results = {
         PLAYER_ONE: `Player One Wins!!!`,
         PLAYER_TWO: `Player Two Wins!!!`,
@@ -13,7 +13,7 @@ export class Game extends GameElements {
     public resultDescription: IResultDescription = {
         'rock:scissors': 'Rock crushes Scissors',
         'paper:rock': 'Paper covers Rock',
-        'scissors:paper': 'Scissors cut Paper'
+        'scissors:paper': 'Scissors cuts Paper'
     };
 
     private isSimulation = false;
@@ -62,24 +62,36 @@ export class Game extends GameElements {
     }
 
     checkResult(playerOneChoice: choice, playerTwoChoice: choice): string {
-        const result = `${playerOneChoice}:${playerTwoChoice}`;
+        let winner = null;
+        const playerChoices = `${playerOneChoice}:${playerTwoChoice}`; // eg. paper:rock
+        const result = playerOneChoice === playerTwoChoice ? this.results.DRAW
+            : this.possiblePlayerOneWins.includes(playerChoices)
+                ? this.results.PLAYER_ONE
+                : this.results.PLAYER_TWO;
 
-        this.displayResult(playerOneChoice, playerTwoChoice)
-
-        if (playerOneChoice === playerTwoChoice) {
-            this.description.textContent = '-';
-            return this.result_elem.innerHTML = this.results.DRAW;
-        } else if (this.possibleWins.indexOf(result) > -1) {
-            this.playerOne.score++;
-            this.description.textContent = this.resultDescription[result];
-            this.updateScore(this.score_one, this.playerOne.score);
-            return this.result_elem.innerHTML = this.results.PLAYER_ONE;
-        } else {
-            this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`];
-            this.playerTwo.score++;
-            this.updateScore(this.score_two, this.playerTwo.score);
-            return this.result_elem.innerHTML = this.results.PLAYER_TWO;
+        switch (result) {
+            case this.results.PLAYER_ONE:
+                this.playerOne.score++;
+                this.description.textContent = this.resultDescription[playerChoices];
+                this.updateScoreboard(this.score_one, this.playerOne.score);
+                this.result_elem.innerHTML = this.results.PLAYER_ONE;
+                winner = 'playerOne';
+                break;
+            case this.results.PLAYER_TWO:
+                this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`];
+                this.playerTwo.score++;
+                this.updateScoreboard(this.score_two, this.playerTwo.score);
+                this.result_elem.innerHTML = this.results.PLAYER_TWO;
+                winner = 'playerTwo';
+                break;
+            default:
+                this.description.textContent = '-';
+                this.result_elem.innerHTML = this.results.DRAW;
+                break;
         }
+
+        this.displayResult(playerOneChoice, playerTwoChoice, winner);
+        return this.result_elem.innerHTML;
     }
 
     setPlayerNames(playerOne: string, playerTwo: string): void {
@@ -87,7 +99,7 @@ export class Game extends GameElements {
         this.player_two_name.textContent = playerTwo;
     }
 
-    simulateGame() {
+    simulateGame(): void {
         if (!this.isSimulation) {
             this.restartGame()
             this.isSimulation = true;
@@ -97,29 +109,29 @@ export class Game extends GameElements {
         this.isSimulation = true;
     }
 
-    updateScore(elementToUpdate: HTMLElement, score: number): void {
+    updateScoreboard(elementToUpdate: HTMLElement, score: number): void {
         elementToUpdate.innerHTML = score.toString();
         if (this.restart_btn.hasAttribute('disabled')) {
             this.restart_btn.removeAttribute('disabled');
         }
     }
 
-    restartGame() {
+    restartGame(): IPlayer[] {
         this.playerOne.score = 0;
         this.playerTwo.score = 0;
         this.restart_btn.setAttribute('disabled', 'disabled');
         this.result_elem.textContent = 'Play the game'
         this.description.textContent = 'Rock - Paper - Scissors'
-        this.updateScore(this.score_one, this.playerOne.score)
-        this.updateScore(this.score_two, this.playerTwo.score)
+        this.updateScoreboard(this.score_one, this.playerOne.score)
+        this.updateScoreboard(this.score_two, this.playerTwo.score)
 
         return [this.playerOne, this.playerTwo]
     }
 
-    displayResult(playerOneChoice: choice, playerTwoChoice: choice) {
+    displayResult(playerOneChoice: choice, playerTwoChoice: choice, winner: string) {
         this.main_stage.classList.add('game-over');
-        this.player_one_stage.className = `player player-one ${playerOneChoice}`;
-        this.player_two_stage.className = `player player-two ${playerTwoChoice}`;
+        this.player_one_stage.className = `player player-one ${playerOneChoice} ${winner === 'playerOne' ? 'winner' : ''}`;
+        this.player_two_stage.className = `player player-two ${playerTwoChoice} ${winner === 'playerTwo' ? 'winner' : ''}`;
     }
 }
 

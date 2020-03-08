@@ -52,11 +52,11 @@ describe('Game', () => {
         game.description = document.createElement('div');
         game.score_one = document.createElement('div');
         game.score_two = document.createElement('div');
-        jest.spyOn(game, 'updateScore').mockImplementation();
+        jest.spyOn(game, 'updateScoreboard').mockImplementation();
 
         game.restartGame();
 
-        expect(game.updateScore).toHaveBeenCalled();
+        expect(game.updateScoreboard).toHaveBeenCalled();
         expect(game.restart_btn.hasAttribute('disabled')).toBe(true);
     });
 
