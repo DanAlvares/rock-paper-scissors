@@ -36,7 +36,7 @@ export class Game extends GameElements {
         this.player_one_stage = document.querySelector('.stage .player-one');
         this.player_two_stage = document.querySelector('.stage .player-two');
         this.result_elem = document.querySelector('.result');
-        this.description = document.querySelector('h3');
+        this.description = document.querySelector('.description');
 
         this.rock_btn.addEventListener('click', this.play.bind(this, 'rock'));
         this.paper_btn.addEventListener('click', this.play.bind(this, 'paper'));
