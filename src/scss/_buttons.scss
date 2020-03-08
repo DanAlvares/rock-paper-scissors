@@ -1,5 +1,5 @@
 .buttons {
-    border-bottom: solid 1px #ddd;
+    border-bottom: solid 1px $light-grey;
 	display: flex;
     justify-content: center;
     flex-flow: wrap;
@@ -21,7 +21,7 @@
 		&.spock-btn{background-position: -480px 0;}
 	}
 	
-	@media (max-width: 520px) {
+	@media (max-width: $breakpoint) {
 		transform: scale(.88);
 	}
 }
@@ -32,11 +32,11 @@
 	justify-content: center;
     
 	button {
-		background-color: #e77171;
+		background-color: $primary-color;
 		border: none;
-		box-shadow: 1px 1px 3px #ccc;
+		box-shadow: 1px 1px 3px $shadow-color;
 		border-radius: 50%;
-		color: white;
+		color: $white;
 		cursor: pointer;
 		font-weight: bold;
 		height: 70px;
@@ -45,7 +45,7 @@
 		width: 70px;
 
 		.lizard-spock-btn {
-			background-color: #094809;
+			background-color: $tertiary-color;
 		}
 	}
 }
