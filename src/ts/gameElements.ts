@@ -13,4 +13,8 @@ export class GameElements {
     public player_two_stage!: HTMLElement;
     public result_elem!: HTMLElement;
     public description!: HTMLElement;
+
+    public lizard_spock_btn!: HTMLElement;
+    public lizard_btn!: HTMLElement;
+    public spock_btn!: HTMLElement;
 }

@@ -37,6 +37,7 @@ export class Game extends GameElements {
         this.player_two_stage = document.querySelector('.stage .player-two');
         this.result_elem = document.querySelector('.result');
         this.description = document.querySelector('.description');
+        this.lizard_spock_btn = document.querySelector('.lizard-spock-btn');
 
         this.rock_btn.addEventListener('click', this.play.bind(this, 'rock'));
         this.paper_btn.addEventListener('click', this.play.bind(this, 'paper'));
@@ -44,6 +45,7 @@ export class Game extends GameElements {
 
         this.restart_btn.addEventListener('click', this.restartGame.bind(this));
         this.simulate_btn.addEventListener('click', this.simulateGame.bind(this));
+        this.lizard_spock_btn.addEventListener('click', this.addLizardSpock.bind(this));
     }
 
     play(playerChoice: choice): void {
@@ -120,18 +122,62 @@ export class Game extends GameElements {
         this.playerOne.score = 0;
         this.playerTwo.score = 0;
         this.restart_btn.setAttribute('disabled', 'disabled');
-        this.result_elem.textContent = 'Play the game'
-        this.description.textContent = 'Rock - Paper - Scissors'
+        this.result_elem.textContent = 'Play the game';
+        this.description.textContent = 'Rock - Paper - Scissors';
+        this.resetStage();
         this.updateScoreboard(this.score_one, this.playerOne.score)
         this.updateScoreboard(this.score_two, this.playerTwo.score)
 
         return [this.playerOne, this.playerTwo]
     }
 
+    resetStage() {
+        this.main_stage.classList.remove('game-over')
+        this.player_one_stage.className = `player player-one`;
+        this.player_two_stage.className = `player player-two`;
+    }
+
     displayResult(playerOneChoice: choice, playerTwoChoice: choice, winner: string) {
         this.main_stage.classList.add('game-over');
-        this.player_one_stage.className = `player player-one ${playerOneChoice} ${winner === 'playerOne' ? 'winner' : ''}`;
-        this.player_two_stage.className = `player player-two ${playerTwoChoice} ${winner === 'playerTwo' ? 'winner' : ''}`;
+
+        this.player_one_stage.className =
+            `player player-one ${playerOneChoice} ${winner ? winner === 'playerOne' ? 'winner' : 'loser' : ''}`;
+
+        this.player_two_stage.className =
+            `player player-two ${playerTwoChoice} ${winner ? winner === 'playerTwo' ? 'winner' : 'loser' : ''}`;
+    }
+
+    addLizardSpock() {
+        this.possibleChoices.push('lizard', 'spock');
+        this.possiblePlayerOneWins.push(
+            'rock:lizard',
+            'lizard:spock',
+            'spock:scissors',
+            'paper:spock',
+            'scissors:lizard',
+            'spock:rock',
+            'lizard:paper')
+        this.resultDescription = {
+            ...this.resultDescription,
+            'rock:lizard': 'Rock crushes Lizard',
+            'lizard:spock': 'Lizard poisens Spock',
+            'spock:scissors': 'Spock smashes Scissors',
+            'paper:spock': 'Paper disproves Spock',
+            'scissors:lizard': 'Scissors decapitates Lizard',
+            'spock:rock': 'Spock vaporizes Rock',
+            'lizard:paper': 'Lizard eats Paper',
+        }
+
+        this.lizard_btn = document.querySelector('.lizard-btn');
+        this.spock_btn = document.querySelector('.spock-btn');
+
+        this.lizard_btn.removeAttribute('hidden');
+        this.spock_btn.removeAttribute('hidden');
+
+        this.lizard_btn.addEventListener('click', this.play.bind(this, 'lizard'));
+        this.spock_btn.addEventListener('click', this.play.bind(this, 'spock'));
+
+        this.lizard_spock_btn.setAttribute('hidden', 'hidden');
     }
 }
 

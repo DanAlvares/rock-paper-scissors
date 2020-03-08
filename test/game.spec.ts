@@ -53,9 +53,11 @@ describe('Game', () => {
         game.score_one = document.createElement('div');
         game.score_two = document.createElement('div');
         jest.spyOn(game, 'updateScoreboard').mockImplementation();
+        jest.spyOn(game, 'resetStage').mockImplementation();
 
         game.restartGame();
 
+        expect(game.resetStage).toHaveBeenCalled();
         expect(game.updateScoreboard).toHaveBeenCalled();
         expect(game.restart_btn.hasAttribute('disabled')).toBe(true);
     });

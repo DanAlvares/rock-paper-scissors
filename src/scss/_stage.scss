@@ -2,6 +2,7 @@
 	align-items: center;
 	display: flex;
 	justify-content: center;
+
 	
 	&.game-over .player	{ 
 		background: url('../images/RPSLS.png') no-repeat 0 0 transparent; 
@@ -11,13 +12,22 @@
 		background-color: #eee;
 		border-radius: 50%;
 		height: 200px;
-		margin: 2rem 0;
+		margin: 1rem 0;
 		width: 200px;
+		transition: transform .2s linear, filter .2s linear;
 
 		&.paper{background-position: -242px 0;}
 		&.scissors{background-position: -484px 0;}
 		&.lizard{background-position: -726px 0;}
 		&.spock{background-position: -971px 0;}
+
+		&.winner{
+			transform: scale(1.1);
+		}
+		&.loser {
+			filter: grayscale(1);
+			transform: scale(.75);
+		}
 	}
 	span {
 		display: inline-block;
