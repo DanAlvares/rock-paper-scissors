@@ -1,5 +1,3 @@
-const logger = (it: unknown) => {
+export const logger = (it: unknown) => {
 	console.log(it);
 }
-
-export default logger;

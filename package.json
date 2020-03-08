@@ -14,7 +14,7 @@
     "lint": "eslint . --ext .ts",
     "build": "webpack",
     "test": "jest --runInBand",
-    "test:watch": "jest --watch",
+    "test:watch": "jest --runInBand --watch",
     "test:coverage": "jest --coverage"
   },
   "devDependencies": {
@@ -24,6 +24,7 @@
     "@types/jest": "^25.1.4",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.5",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "core-js": "^3.3.6",
     "css-loader": "^3.2.0",
     "eslint": "6.6.0",
