@@ -1,0 +1,26 @@
+.stage{
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	
+	&.game-over .player	{ 
+		background: url('../images/RPSLS.png') no-repeat 0 0 transparent; 
+	}
+		
+	.player {
+		background-color: #eee;
+		border-radius: 50%;
+		height: 200px;
+		margin: 2rem 1rem;
+		width: 200px;
+
+		&.paper{background-position: -242px 0;}
+		&.scissors{background-position: -484px 0;}
+		&.lizard{background-position: -726px 0;}
+		&.spock{background-position: -971px 0;}
+	}
+	span {
+		display: inline-block;
+		padding: 0 1rem;
+	}
+}

@@ -1,0 +1,35 @@
+.buttons {
+	display: flex;
+	justify-content: center;
+
+	button {
+		background: url('../images/RPSLS.png') no-repeat 0 0 transparent;
+		background-size: 580px;
+		border: none;
+		margin: 0 .5rem;
+		height: 100px;
+		width: 100px;
+		&:not([disabled]){
+			cursor: pointer;
+		}
+		&.paper-btn{background-position: -122px 0;}
+		&.scissors-btn{background-position: -238px 0;}
+		&.lizard-btn{background-position: -360px 0;}
+		&.spock-btn{background-position: -480px 0;}
+	}
+}
+
+.actions {
+    align-items: center;
+	display: flex;
+    flex-flow: column;
+    
+	button {
+		width: calc(300px + 2rem);
+		background-color: #eee;
+		border: none;
+		margin-top: 1rem;
+		cursor: pointer;
+		height: 50px;
+	}
+}

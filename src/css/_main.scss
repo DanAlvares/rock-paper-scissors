@@ -1,0 +1,32 @@
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	font-family: Helvetica, sans-serif;
+}
+main {
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+.result {
+    color: #555;
+	font-size: 2.4rem;
+    font-style: italic;
+    font-weight: 100;
+    margin: 1rem;
+    text-align: center;
+    text-shadow: 1px 1px 3px #ccc;
+}
+
+// This is the recommended method by webaim.org
+// to hiding text from users
+.sr-only {
+	position:absolute;
+	top:auto;
+	left:-10000px;
+	height:1px;
+	overflow:hidden;
+	width:1px;
+}
