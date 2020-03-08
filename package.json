@@ -12,7 +12,7 @@
   "scripts": {
     "dev": "webpack-dev-server --content-base --mode development",
     "lint": "eslint . --ext .ts",
-    "build": "webpack",
+    "build": "webpack --mode production",
     "test": "jest --runInBand",
     "test:watch": "jest --runInBand --watch",
     "test:coverage": "jest --coverage"
