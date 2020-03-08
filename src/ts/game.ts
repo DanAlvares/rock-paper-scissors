@@ -41,6 +41,8 @@ export class Game extends GameElements {
         this.rock_btn.addEventListener('click', this.play.bind(this, 'rock'));
         this.paper_btn.addEventListener('click', this.play.bind(this, 'paper'));
         this.scissors_btn.addEventListener('click', this.play.bind(this, 'scissors'));
+
+        this.restart_btn.addEventListener('click', this.restartGame.bind(this))
     }
 
     play(playerChoice: choice): void {
@@ -80,6 +82,21 @@ export class Game extends GameElements {
 
     updateScore(elementToUpdate: HTMLElement, score: number): void {
         elementToUpdate.innerHTML = score.toString();
+        if (this.restart_btn.hasAttribute('disabled')) {
+            this.restart_btn.removeAttribute('disabled');
+        }
+    }
+
+    restartGame() {
+        this.playerOne.score = 0;
+        this.playerTwo.score = 0;
+        this.restart_btn.setAttribute('disabled', 'disabled');
+        this.result_elem.textContent = 'Play the game'
+        this.description.textContent = 'Rock - Paper - Scissors'
+        this.updateScore(this.score_one, this.playerOne.score)
+        this.updateScore(this.score_two, this.playerTwo.score)
+
+        return [this.playerOne, this.playerTwo]
     }
 }
 

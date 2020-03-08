@@ -11,7 +11,7 @@ describe('Game', () => {
         // Arrange
         jest.spyOn(game, 'checkResult').mockImplementation();
         jest.spyOn(game, 'setPlayerNames').mockImplementation();
-        jest.spyOn(game, 'computerChoice').mockImplementation()
+        jest.spyOn(game, 'computerChoice').mockImplementation();
 
         // Act
         game.play('rock');
@@ -46,11 +46,26 @@ describe('Game', () => {
         expect(game.possibleChoices).toContain(cpuChoice);
     });
 
+    it('should restart the game', () => {
+        game.restart_btn = document.createElement('div');
+        game.result_elem = document.createElement('div');
+        game.description = document.createElement('div');
+        game.score_one = document.createElement('div');
+        game.score_two = document.createElement('div');
+        jest.spyOn(game, 'updateScore').mockImplementation();
+
+        game.restartGame();
+
+        expect(game.updateScore).toHaveBeenCalled();
+        expect(game.restart_btn.hasAttribute('disabled')).toBe(true);
+    });
+
     describe('Check Result', () => {
         beforeEach(() => {
             // Arrange
             game.playerOne.score = 0;
             game.playerTwo.score = 0;
+            game.restart_btn = document.createElement('div');
             game.description = document.createElement('div');
             game.result_elem = document.createElement('div');
             game.score_one = document.createElement('div');
