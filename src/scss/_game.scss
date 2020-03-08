@@ -1,0 +1,42 @@
+main {
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+}
+.container {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    margin: auto;
+    width: 540px;
+    max-width: 100%;
+}
+.result {
+    color: #555;
+	font-size: 2.6rem;
+    font-style: italic;
+    font-weight: 100;
+    margin: 1rem 0;
+    text-align: center;
+	text-shadow: 1px 1px 3px #ccc;
+	
+	@media (max-width: 567px) {
+		font-size: 2rem;
+	}
+}
+.description {
+    color: white;
+    font-size: 1.6rem;
+    font-style: italic;
+    font-weight: 100;
+    margin: 0 1rem;
+    text-align: center;
+    
+    span {
+        background: #52a744;
+        border-radius: 3px;
+        display: inline-block;
+        padding: .4rem 1rem;
+        min-width: 200px;
+    }
+}

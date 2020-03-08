@@ -5,7 +5,7 @@
 
 	
 	&.game-over .player	{ 
-		background: url('../images/RPSLS.png') no-repeat 0 0 transparent; 
+		background: url('../images/rpsls.png') no-repeat 0 0 transparent; 
 	}
 		
 	.player {
@@ -14,7 +14,7 @@
 		height: 200px;
 		margin: 1rem 0;
 		width: 200px;
-		transition: transform .2s linear, filter .2s linear;
+		transition: transform .3s linear, filter .3s linear;
 
 		&.paper{background-position: -242px 0;}
 		&.scissors{background-position: -484px 0;}
@@ -25,12 +25,31 @@
 			transform: scale(1.1);
 		}
 		&.loser {
-			filter: grayscale(1);
-			transform: scale(.75);
+			filter: grayscale(1) blur(3px);
+			transform: scale(0.7);
 		}
 	}
 	span {
 		display: inline-block;
 		padding: 0 1rem;
+	}
+	
+		
+	@media (max-width: 567px) {
+		&.game-over .player{background-size: 760px;}
+		.player{
+			height: 130px;
+			margin: 1rem 0;
+			width: 130px;
+			
+			&.rock{background-position: -1px 0;}
+			&.paper{background-position: -159px 0;}
+			&.scissors{background-position: -316px 0;}
+			&.lizard{background-position: -474px 0;}
+			&.spock{background-position: -631px 0;}
+		}
+		span{
+			padding: 0 .5rem;
+		}
 	}
 }

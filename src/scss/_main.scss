@@ -5,33 +5,9 @@ body {
 	margin: 0;
 	font-family: Helvetica, sans-serif;
 }
-main {
-	display: flex;
-	justify-content: center;
-	flex-flow: column;
-}
-.result {
-    color: #555;
-	font-size: 2.4rem;
-    font-style: italic;
-    font-weight: 100;
-    margin: 1rem;
-    text-align: center;
-    text-shadow: 1px 1px 3px #ccc;
-}
-.description {
-	border-radius: 2px;
-	display: inline-block;
-	font-size: 1.8rem;
-	font-style: italic;
-	font-weight: 100;
-	margin: 0;
-	padding: 5px;
-	text-align: center;
-	width: auto;
-}
+
 // This is the recommended method by webaim.org
-// to hiding text from users
+// for hiding text from users
 .sr-only {
 	position:absolute;
 	top:auto;

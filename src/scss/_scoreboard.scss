@@ -1,15 +1,20 @@
 .scoreboard {
+	background-color: #dbdadb	;
+	display: -ms-flexbox;
 	display: flex;
     justify-content: center;
-    flex: 1;
     flex-flow: wrap;
+	padding: .25rem;
 
 	&>div  {
-		box-shadow: 1px 1px 5px #ccc;
+		background-color: white;
+		box-shadow: 0px 0px 3px #aaa;
+		-ms-flex: 0 0 240px;
 		flex: 0 0 240px;
-        padding: 12px 15px 8px;
-        position: relative;
-        margin: .5rem;
+		height: 38px;
+		padding: 12px 15px 8px;
+		position: relative;
+		margin: .5rem;
 
 		span.score {
 			background-color: #eee;

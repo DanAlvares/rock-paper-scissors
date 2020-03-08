@@ -10,7 +10,7 @@
 
 <body>
 	<header>
-		<img src="../src/images/logo.jpg" alt="Gumtree Logo">
+		<img src="./logo.jpg" alt="Gumtree Logo">
 		<h1>Rock - Paper - Scissors</h1>
 	</header>
 	<main class="game">
@@ -18,30 +18,31 @@
 			<div class="player-one"><strong>You</strong> <span class="score">0</span></div>
 			<div class="player-two"><strong>SimOne (CPU)</strong> <span class="score">0</span></div>
 		</section>
+		<div class="container">
+			<h2 class="result">Play the game</h2>
+			<h3 class="description"><span>-</span></h3>
 
-		<h2 class="result">Play the game</h2>
-		<h3 class="description">-</h3>
+			<section class="stage">
+				<div class="player player-one"></div>
+				<span>VS</span>
+				<div class="player player-two"></div>
+			</section>
 
-		<section class="stage">
-			<div class="player player-one"></div>
-			<span>VS</span>
-			<div class="player player-two"></div>
-		</section>
+			<section class="buttons">
+				<button class="rock-btn" title="Rock"><span class="sr-only">Rock</span></button>
+				<button class="paper-btn" title="Paper"><span class="sr-only">Paper</span></button>
+				<button class="scissors-btn" title="Scissors"><span class="sr-only">Scissors</span></button>
 
-		<section class="buttons">
-			<button class="rock-btn"><span class="sr-only">Rock</span></button>
-			<button class="paper-btn"><span class="sr-only">Paper</span></button>
-			<button class="scissors-btn"><span class="sr-only">Scissors</span></button>
+				<button class="lizard-btn" title="Lizard" hidden><span class="sr-only">Lizard</span></button>
+				<button class="spock-btn" title="Spock" hidden><span class="sr-only">Spock</span></button>
+			</section>
 
-			<button class="lizard-btn" hidden><span class="sr-only">Lizard</span></button>
-			<button class="spock-btn" hidden><span class="sr-only">Spock</span></button>
-		</section>
-
-		<section class="actions">
-			<button class="simulate-btn">Simulate</button>
-			<button class="restart-btn" disabled>Restart</button>
-			<button class="lizard-spock-btn">Add Lizard Spock</button>
-		</section>
+			<section class="actions">
+				<button class="simulate-btn">Simulate</button>
+				<button class="restart-btn" disabled>Restart</button>
+				<button class="lizard-spock-btn">Add Lizard Spock</button>
+			</section>
+		</div>
 	</main>
 </body>
 
