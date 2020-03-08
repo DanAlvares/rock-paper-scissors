@@ -10,10 +10,10 @@ module.exports = {
 		inline: true
 	},
 	resolve: {
-		extensions: [".js"]
+		extensions: [".ts", ".js"]
 	},
 	entry: {
-		index: ["./src/js/index.js"]
+		index: ["./src/ts/index.ts"]
 	},
 	output: {
 		path: path.resolve(__dirname, "build"),
@@ -36,20 +36,19 @@ module.exports = {
 				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"]
 			},
 			{
+				test: /\.ts$/,
+				exclude: [/node_modules/],
+				use: ["ts-loader"]
+			},
+			{
 				test: /\.js$/,
 				exclude: [/node_modules/],
 				use: ["babel-loader", "eslint-loader"]
 			},
 			{
 				test: /\.(png|jpg|gif)$/i,
-				use: [
-					{
-						loader: "url-loader",
-						options: {
-							limit: 8192
-						}
-					}
-				]
+				loader: 'file-loader?name=[name].[ext]'
+
 			}
 		]
 	}

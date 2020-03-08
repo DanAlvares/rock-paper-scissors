@@ -1,4 +1,4 @@
-import logger from '../src/js/logger';
+import logger from '../src/ts/logger';
 
 describe('Logger()', () => {
 
@@ -6,7 +6,7 @@ describe('Logger()', () => {
 		// setup
 		let consoleLogWasCalledWith;
 		const originalConsoleLog = console.log;
-		const fakeConsoleLog = message => consoleLogWasCalledWith = message;
+		const fakeConsoleLog = (message: unknown) => consoleLogWasCalledWith = message;
 		console.log = fakeConsoleLog;
 		// exercise
 		logger('some message');
