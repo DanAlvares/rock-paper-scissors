@@ -1,5 +1,8 @@
 # Rock - Paper - Scissors 
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d598d746-1b86-4b46-b8d1-38794f87ebeb/deploy-status)](https://rps-ls.netlify.com/)
+
+
 A simple game of Rock-Paper-Scissors where you can play against the computer or simulate a game, computer vs computer. The game can also be extended for `Lizard-Spock`.
 
 ## Running the App
@@ -10,7 +13,8 @@ A simple game of Rock-Paper-Scissors where you can play against the computer or 
     $ yarn dev 
 
 I have set up Continuous Deployment with Netlify, so the app is released to production when the code is pushed or merged to master.   
-**DEMO** - [https://rps-ls.netlify.com/](https://rps-ls.netlify.com/)
+**DEMO** - [https://rps-ls.netlify.com/](https://rps-ls.netlify.com/)  
+
 
 ## Running the unit tests
 
