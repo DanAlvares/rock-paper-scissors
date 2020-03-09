@@ -5,7 +5,7 @@ export class Game extends GameElements {
     public playerOne: IPlayer = { name: 'Player One', score: 0 };
     public playerTwo: IPlayer = { name: 'Simone (CPU)', score: 0 };
     public possibleChoices: choice[] = ['rock', 'paper', 'scissors'];
-    public possiblePlayerOneWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
+    public possibleWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
     public results = {
         PLAYER_ONE: `Player One Wins!!!`,
         PLAYER_TWO: `Player Two Wins!!!`,
@@ -70,7 +70,7 @@ export class Game extends GameElements {
         let winner = null;
         const playerChoices = `${playerOneChoice}:${playerTwoChoice}`; // eg. paper:rock
         const result = playerOneChoice === playerTwoChoice ? this.results.DRAW
-            : this.possiblePlayerOneWins.includes(playerChoices)
+            : this.possibleWins.includes(playerChoices)
                 ? this.results.PLAYER_ONE
                 : this.results.PLAYER_TWO;
 
@@ -152,7 +152,7 @@ export class Game extends GameElements {
 
     addLizardSpock() {
         this.possibleChoices.push('lizard', 'spock');
-        this.possiblePlayerOneWins.push(
+        this.possibleWins.push(
             'rock:lizard',
             'lizard:spock',
             'spock:scissors',
