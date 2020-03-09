@@ -1,25 +1,27 @@
 import { Game } from '../src/ts/game';
 
-describe('Game', () => {
+describe('RockPaperScissors', () => {
     let game: Game;
 
     beforeEach(() => {
         game = new Game();
     })
 
-    it('should play the game', () => {
-        // Arrange
-        jest.spyOn(game, 'checkResult').mockImplementation();
-        jest.spyOn(game, 'setPlayerNames').mockImplementation();
-        jest.spyOn(game, 'computerChoice').mockImplementation();
+    describe('Game Play', () => {
+        it('should play the game', () => {
+            // Arrange
+            jest.spyOn(game, 'checkResult').mockImplementation();
+            jest.spyOn(game, 'setPlayerNames').mockImplementation();
+            jest.spyOn(game, 'computerChoice').mockImplementation();
+            // Act
 
-        // Act
-        game.play('rock');
+            game.play('rock');
 
-        // Assert
-        expect(game.setPlayerNames).toHaveBeenCalled()
-        expect(game.computerChoice).toHaveBeenCalled()
-        expect(game.checkResult).toHaveBeenCalled()
+            // Assert
+            expect(game.setPlayerNames).toHaveBeenCalled()
+            expect(game.computerChoice).toHaveBeenCalled();
+            expect(game.checkResult).toHaveBeenCalled();
+        });
     });
 
     it('should set the names of the players', () => {
@@ -105,5 +107,19 @@ describe('Game', () => {
             expect(result).toBe(game.results.DRAW)
             expect(game.description.innerHTML).toBe('-')
         });
+    });
+
+    it('should ADD Lizard-Spock', () => {
+        // Arrange
+        game.lizard_btn = document.createElement('div');
+        game.spock_btn = document.createElement('div');
+        game.lizard_spock_btn = document.createElement('div');
+
+        // Act
+        game.addLizardSpock();
+
+        // Assert
+        expect(game.possibleChoices).toContain('lizard');
+        expect(game.possibleChoices).toContain('spock');
     });
 });

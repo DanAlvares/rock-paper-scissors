@@ -1,9 +1,10 @@
 import { GameElements } from './gameElements';
+import { choice, IPlayer, IResultDescription } from '../models/game.model';
 
 export class Game extends GameElements {
     public playerOne: IPlayer = { name: 'Player One', score: 0 };
     public playerTwo: IPlayer = { name: 'Simone (CPU)', score: 0 };
-    public possibleChoices: choices = ['rock', 'paper', 'scissors'];
+    public possibleChoices: choice[] = ['rock', 'paper', 'scissors'];
     public possiblePlayerOneWins: string[] = ['rock:scissors', 'paper:rock', 'scissors:paper'];
     public results = {
         PLAYER_ONE: `Player One Wins!!!`,
@@ -37,6 +38,8 @@ export class Game extends GameElements {
         this.player_two_stage = document.querySelector('.stage .player-two');
         this.result_elem = document.querySelector('.result');
         this.description = document.querySelector('.description span');
+        this.lizard_btn = document.querySelector('.lizard-btn');
+        this.spock_btn = document.querySelector('.spock-btn');
         this.lizard_spock_btn = document.querySelector('.lizard-spock-btn');
 
         this.rock_btn.addEventListener('click', this.play.bind(this, 'rock'));
@@ -80,8 +83,8 @@ export class Game extends GameElements {
                 winner = 'playerOne';
                 break;
             case this.results.PLAYER_TWO:
-                this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`];
                 this.playerTwo.score++;
+                this.description.textContent = this.resultDescription[`${playerTwoChoice}:${playerOneChoice}`];
                 this.updateScoreboard(this.score_two, this.playerTwo.score);
                 this.result_elem.innerHTML = this.results.PLAYER_TWO;
                 winner = 'playerTwo';
@@ -168,9 +171,6 @@ export class Game extends GameElements {
             'lizard:paper': 'Lizard eats Paper',
         }
 
-        this.lizard_btn = document.querySelector('.lizard-btn');
-        this.spock_btn = document.querySelector('.spock-btn');
-
         this.lizard_btn.removeAttribute('hidden');
         this.spock_btn.removeAttribute('hidden');
 
@@ -179,16 +179,4 @@ export class Game extends GameElements {
 
         this.lizard_spock_btn.setAttribute('hidden', 'hidden');
     }
-}
-
-type choices = choice[];
-type choice = 'rock' | 'paper' | 'scissors' | 'lizard' | 'spock';
-
-interface IPlayer {
-    name: string;
-    score: number;
-}
-
-interface IResultDescription {
-    [key: string]: string;
 }

@@ -1,6 +1,6 @@
 # Rock - Paper - Scissors 
 
-A simple game of Rock-Paper-Scissors where you can play against the computer or simulate a game, computer vs computer. 
+A simple game of Rock-Paper-Scissors where you can play against the computer or simulate a game, computer vs computer. The game can also be extended for `Lizard-Spock`.
 
 ## Running the App
 
@@ -9,11 +9,23 @@ A simple game of Rock-Paper-Scissors where you can play against the computer or 
     $ yarn install  
     $ yarn dev 
 
-## Running the tests
+I have set up Continuous Deployment with Netlify, so the app is released when the code is pushed or merged to master.   
+**DEMO** - [https://rps-ls.netlify.com/](https://rps-ls.netlify.com/)
+
+## Running the unit tests
 
     $ yarn test
 
-I have set up a pre-commit hook to run the tests, but only because the tests run in less that 10 seconds. Any more that than that and I don't beleive it would be feasible.  
+I have set up a pre-commit hook to run the tests, but only because the tests run in less that 10 seconds. Any more that than that and I don't beleive it would be feasible. 
+**+-60% coverage**
+
+## Running the e2e tests
+
+    $ yarn e2e
+
+Then click on `game.spec.ts` in the Cypress GUI.
+
+I have setup a couple of e2e/integration tests with Cypress. I have not done any assertions, just a very basic automated game-play. (So not very useful at the moment, but a starting point)
 
 ## Adding Lizard - Spock
 Extending the game for Lizard-Spock is trivial. There is a single method `addLizardSpock` which simply:
@@ -34,22 +46,24 @@ I added TypeScript support. I am a fan of TS and use it in almost every project.
 
 ### Workflow
 I haven't used any kind of git flow, all commits were to master :cowboy_hat_face:. As mentioned above I have set up a pre-commit hook to run the tests, as well as run the linter on staged files.
- 
-I have also set up Continuous Deployment with Netlify, so the app is released when the code is pushed or merged to master. [https://rps-ls.netlify.com/](https://rps-ls.netlify.com/)
-
 
 ## Performance and Accessibility
 I beleive that well structured, semantic markup will get the app 80% of the way to having a properly accessible application.  
  
- The lighthouse score of this app is 100% for all **Performance**, **Best Practices**, **Accessibility** and **SEO**.
+The lighthouse score of this app is 100% for all **Performance**, **Best Practices**, **Accessibility** and **SEO**.
 
- I started adding a Service Worker, manifest.json file etc (in a `pwa` branch) to make the app a full PWA and therefore available offline, but I ran out of time.
-
+I started adding a Service Worker, manifest.json file etc (in a `pwa` branch) to make the app a full PWA and therefore available offline, but I ran out of time.
 
 ### Improvements
 Some things that could be improved on the current state of this app
 
 - Tests organised a little better
-- Tests take too long to run	
+- Tests take too long to run. Some Jest configuration could probably solve this
 - The Game class could probably be stream-lined slightly
 
+## Conclusion
+
+Please let me know if you have any questions.   
+Any feedback, good or bad, would be much appreciated.
+
+Thank you!
