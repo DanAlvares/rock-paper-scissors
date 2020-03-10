@@ -20,7 +20,7 @@ I have set up Continuous Deployment with Netlify, so the app is released to prod
 
     $ yarn test
 
-I have set up a pre-commit hook to run the tests. I believe this is only feasible because the tests average less that 10 seconds. Any more that than that and they should be run in a CI pipeline, in my opinion.  
+I have set up a pre-commit hook to run the tests. I believe this is only feasible because the tests average less that 10 seconds. Any more  than that and they should be run in a CI pipeline, in my opinion.  
 **+-60% coverage**
 
 ## Running the e2e tests
@@ -41,7 +41,7 @@ Extending the game for Lizard-Spock is trivial. There is a single method `addLiz
 I have added a button that extends the game
 
 ## Approach
-I had planned to use Web Components (or at least Custom Elements), but after about 30 minutes fiddling with Babel/TypeScript/Webpack/polyfills, just to support IE11, I abandoned that idea on and added the markup in straight in the `/public/index.html`
+I had planned to use Web Components (or at least Custom Elements), but after about 30 minutes fiddling with Babel/TypeScript/Webpack/polyfills, just to support IE11, I abandoned that idea and added the markup straight in the `/public/index.html`
 
 ### CSS 
 I didn't spend too much time on styling. The UI is quite rudimentary. I found myself wasting too much time trying to utilise the newer CSS features, such as Custom Properties, Grid etc. to support IE11
@@ -69,6 +69,6 @@ There were a few things that could be improved on the current state of this app
 ## Conclusion
 
 Please let me know if you have any questions.   
-Any feedback, good or bad, would be much appreciated.
+Any feedback / constructive criticism would be much appreciated.
 
 Thank you!
