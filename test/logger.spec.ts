@@ -1,4 +1,4 @@
-import { logger } from '../src/ts/logger';
+import { logger } from '../src/components/logger';
 
 describe('Logger()', () => {
 

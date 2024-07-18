@@ -1,4 +1,4 @@
-import { Game } from '../src/ts/game';
+import { Game } from '../src/components/game';
 
 describe('RockPaperScissors', () => {
     let game: Game;
